@@ -9,13 +9,16 @@ class Elections(object):
         self.__null = null_votes
 
     def calculate_valid_votes(self):
-        return self.__valid / self.__total_voters * 100
+        return self.__calculate(self.__valid)
 
     def calculate_white_votes(self):
-        return self.__white_votes / self.__total_voters * 100
+        return self.__calculate(self.__white_votes)
 
     def calculate_null_votes(self):
-        return self.__null / self.__total_voters * 100
+        return self.__calculate(self.__null)
+
+    def __calculate(self, value):
+        return value / self.__total_voters * 100
 
 
 if __name__ == '__main__':
