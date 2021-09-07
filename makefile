@@ -1,2 +1,5 @@
-make ex_1:
+ex_1:
 	python ex_1.py
+
+ex_2:
+	python ex_2.py
