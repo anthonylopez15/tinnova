@@ -6,8 +6,19 @@ name = "pypi"
 [packages]
 self = "*"
 elections = "*"
+fastapi = "*"
+fastapi-sqlalchemy = "*"
+pydantic = "*"
+alembic = "*"
+uvicorn = "*"
+psycopg2-binary = "*"
+python-dotenv = "*"
+valid = "*"
+first = "*"
+vendor = "*"
 
 [dev-packages]
+psycopg2 = "*"
 
 [requires]
 python_version = "3.8"
