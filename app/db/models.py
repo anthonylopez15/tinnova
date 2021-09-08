@@ -1,9 +1,9 @@
 from datetime import datetime
 
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 
-from app.database import Base
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey, null
+from app.db.database import Base
 
 
 class Vehicle(Base):
@@ -15,7 +15,7 @@ class Vehicle(Base):
     marca = relationship("Make")
     ano = Column(Integer)
     descricao = Column(String)
-    vendido = Column(Boolean)
+    vendido = Column(Boolean, default=False)
     created = Column(DateTime, default=datetime.now())
     updated = Column(DateTime)
 

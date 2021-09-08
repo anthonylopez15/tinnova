@@ -1,16 +1,15 @@
-from sqlalchemy import delete
 from fastapi import HTTPException
-
+from sqlalchemy import delete
 from sqlalchemy.orm import Session
-from app import models, schemas
-from app.database import engine
+
+from app.db import models
+from app.db.database import engine
 
 
 def find_all(db: Session):
     return db.query(models.Vehicle).all()
 
 
-# TODO incompleto
 def find(db: Session, q: str):
     return db.query(models.Vehicle).filter(models.Vehicle)
 
@@ -41,7 +40,7 @@ def update(db: Session, vehicle, vehicle_id):
         raise HTTPException(status_code=404, detail="Vehicle not Found")
 
     db_marca = db.query(models.Make).filter(models.Make.marca.ilike(vehicle.marca)).first()
-    del vehicle.marca, vehicle.marca_id
+    del vehicle.marca
     if not db_marca:
         raise HTTPException(status_code=404, detail="Brand not Found")
 

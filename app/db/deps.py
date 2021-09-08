@@ -1,4 +1,4 @@
-from app.database import Base, engine, SessionLocal
+from app.db.database import Base, engine, SessionLocal
 
 Base.metadata.create_all(bind=engine)
 

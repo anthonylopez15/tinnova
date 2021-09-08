@@ -8,7 +8,7 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from app import models
+from app.db import models
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 load_dotenv(os.path.join(BASE_DIR, ".env"))

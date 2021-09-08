@@ -3,10 +3,10 @@ from typing import List
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from app import schemas
-from app import controller
-from app.crud import list_make
-from app.deps import get_db
+from app.db import schemas
+from app.db import controller
+from app.db.crud import list_make
+from app.db.deps import get_db
 
 router = APIRouter()
 
@@ -22,12 +22,12 @@ def find_all(db: Session = Depends(get_db)):
 
 
 @router.get("/veiculos/find")
-def find(q: str, db: Session = Depends(get_db)):
-    return "ok"
+def find(q: str):
+    return controller.get_terms(q)
 
 
-@router.get("/veiculos/{id}", response_model=schemas.VehicleBase)
-def find(id: int, db: Session = Depends(get_db)):
+@router.get("/veiculos/{id}")
+def find_by_id(id: int, db: Session = Depends(get_db)):
     return controller.find_by_id(db, id)
 
 
@@ -51,5 +51,5 @@ def update(id: int,
 
 
 @router.delete("/veiculos/{id}")
-def delete(id: int, db: Session = Depends(get_db)):
-    return controller.delete(id, db)
+def delete(id: int):
+    return controller.delete(id)

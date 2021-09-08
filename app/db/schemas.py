@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional, List
+from typing import Optional
 
 from pydantic import BaseModel, Field
 
@@ -30,3 +30,7 @@ class Vehicle(VehicleBase):
 class VehicleUpdate(VehicleBase):
     marca: Optional[Make]
     marca_id: Optional[int]
+
+class VehicleElastic(VehicleUpdate):
+    id: Optional[int]
+    marca: Optional[Make]

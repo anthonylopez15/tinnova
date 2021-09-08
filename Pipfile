@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 self = "*"
-elections = "*"
 fastapi = "*"
 fastapi-sqlalchemy = "*"
 pydantic = "*"
@@ -16,6 +15,7 @@ python-dotenv = "*"
 valid = "*"
 first = "*"
 vendor = "*"
+elasticsearch = "*"
 
 [dev-packages]
 psycopg2 = "*"
