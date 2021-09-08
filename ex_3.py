@@ -3,7 +3,7 @@ def factorial(entry: int):
     result = 0
     is_one = False
 
-    if not entry or entry == 0 or entry == 1:
+    if entry == 0 or entry == 1:
         return 1
 
     while not is_one:
