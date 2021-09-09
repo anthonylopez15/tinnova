@@ -16,6 +16,7 @@ valid = "*"
 first = "*"
 vendor = "*"
 elasticsearch = "*"
+summary = "*"
 
 [dev-packages]
 psycopg2 = "*"
