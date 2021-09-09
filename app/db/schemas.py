@@ -12,11 +12,11 @@ class Make(BaseModel):
 
 
 class VehicleBase(BaseModel):
-    veiculo: Optional[str]
-    ano: Optional[int] = Field(None, example="1990")
-    marca: Optional[str]
-    descricao: Optional[str]
-    vendido: Optional[bool]
+    veiculo: Optional[str] = Field(None, example="Onix")
+    ano: Optional[int] = Field(None, example="2020")
+    marca: Optional[str] = Field(None, example="CHEVROLET")
+    descricao: Optional[str] = Field(None, example="Opcional")
+    vendido: Optional[bool] = Field(None, example="false")
     created: Optional[datetime]
     updated: Optional[datetime]
 
