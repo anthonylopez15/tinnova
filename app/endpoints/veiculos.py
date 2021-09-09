@@ -21,6 +21,21 @@ def find_all(db: Session = Depends(get_db)):
     return controller.get_all(db)
 
 
+@router.get("/veiculos/unsold")
+def unsold(db: Session = Depends(get_db)):
+    return controller.unsold(db)
+
+
+@router.get("/veiculos/distribution-by-maker")
+def distribution(db: Session = Depends(get_db)):
+    return controller.distribution(db)
+
+
+
+@router.get("/veiculos/last-register")
+def last_register(db: Session = Depends(get_db)):
+    return controller.last_register(db)
+
 @router.get("/veiculos/find")
 def find(q: str):
     return controller.get_terms(q)

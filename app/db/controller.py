@@ -88,7 +88,8 @@ def es_search_id(vehicle_id, key):
         }
     }
     response = es.search(body)
-    return response["hits"]["hits"][0][f"{key}"]
+    if response["hits"]["hits"]:
+        return response["hits"]["hits"][0][f"{key}"]
 
 
 def es_update_doc(doc_id, result):
@@ -112,3 +113,26 @@ def get_terms(q: str):
         model = schemas.VehicleBase(**item["_source"])
         result.append(model)
     return result
+
+
+def unsold(db):
+    return {"result": f"Existe {len(crud.unsold(db))} veiculo(s) não vendido(s)"}
+
+
+def distribution(db):
+    results = []
+    response = crud.distribution(db)
+    for item in response:
+        results.append({item._data[0].marca:  f"{item._data[1]} veiculos"})
+    return results
+
+
+def last_register(db):
+    results = []
+    response = crud.last_register(db)
+    for item in response:
+        response = jsonable_encoder(item)
+        model = schemas.Vehicle(**response)
+        model.marca = item.marca.marca
+        results.append(model)
+    return results

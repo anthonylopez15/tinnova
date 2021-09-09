@@ -25,7 +25,7 @@ class VehicleBase(BaseModel):
 
 
 class Vehicle(VehicleBase):
-    marca: Make
+    marca: Optional[Make]
 
 class VehicleUpdate(VehicleBase):
     marca: Optional[Make]

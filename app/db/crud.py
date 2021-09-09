@@ -1,5 +1,7 @@
+from datetime import datetime, timedelta
+
 from fastapi import HTTPException
-from sqlalchemy import delete
+from sqlalchemy import delete, func
 from sqlalchemy.orm import Session
 
 from app.db import models
@@ -59,3 +61,23 @@ def remove(vehicle_id):
     stmt = delete(models.Vehicle).where((models.Vehicle.id == vehicle_id))
     result = conn.execute(stmt)
     return result.rowcount
+
+
+def unsold(db: Session):
+    return db.query(models.Vehicle).filter(models.Vehicle.vendido == False).all()
+
+
+def distribution(db: Session):
+    curs = db.query(models.Make,
+                    func.count(models.Vehicle.marca_id)) \
+        .join(models.Vehicle.marca) \
+        .group_by(models.Make.id) \
+        .all()
+    return curs
+
+
+def last_register(db: Session):
+    curs = db.query(models.Vehicle)\
+        .filter(models.Vehicle.created <= datetime.now())\
+        .filter(models.Vehicle.created >= datetime.now() - timedelta(days=7)).all()
+    return curs
