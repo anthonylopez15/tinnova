@@ -32,7 +32,7 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ## Testando a API
 - Para esta ocasião foi disponiblizado um endereço ip onde o projeto encontra-se hospedado.
 
-- SERVIDOR: http://35.198.47.55:3333/docs#/
+- SERVIDOR: http://35.215.207.254:3333/docs#/
 
 - As endpoints podem ser testados com a ajuda do [Swagger](https://editor.swagger.io/).
 
