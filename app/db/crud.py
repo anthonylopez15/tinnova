@@ -32,8 +32,8 @@ def create(db: Session, vehicle):
     return db_item
 
 
-def list_make(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Make).offset(skip).limit(limit).all()
+def list_make(db: Session):
+    return db.query(models.Make).all()
 
 
 def update(db: Session, vehicle, vehicle_id):
@@ -81,3 +81,11 @@ def last_register(db: Session):
         .filter(models.Vehicle.created <= datetime.now())\
         .filter(models.Vehicle.created >= datetime.now() - timedelta(days=7)).all()
     return curs
+
+
+def create_make(db: Session, make):
+    db_item = models.Make(**make.dict())
+    db.add(db_item)
+    db.commit()
+    db.refresh(db_item)
+    return db_item

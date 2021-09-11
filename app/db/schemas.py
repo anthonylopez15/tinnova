@@ -12,6 +12,7 @@ class Make(BaseModel):
 
 
 class VehicleBase(BaseModel):
+    id: Optional[int]
     veiculo: Optional[str] = Field(None, example="Onix")
     ano: Optional[int] = Field(None, example="2020")
     marca: Optional[str] = Field(None, example="CHEVROLET")

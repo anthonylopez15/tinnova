@@ -15,6 +15,10 @@ router = APIRouter()
 def get_make(db: Session = Depends(get_db)):
     return list_make(db)
 
+@router.post("/marcas")
+def create_make(make: schemas.Make, db: Session = Depends(get_db)):
+    return controller.create_make(make, db)
+
 
 @router.get("/veiculos", response_model=List[schemas.VehicleBase], summary="Lista todos os veiculos")
 def find_all(db: Session = Depends(get_db)):
