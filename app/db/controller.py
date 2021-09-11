@@ -55,7 +55,8 @@ def delete(vehicle_id):
 
 
 def build_vehicle(item):
-    vehicle = schemas.VehicleBase
+    vehicle = schemas.VehicleBase()
+    vehicle.id = item.id
     vehicle.veiculo = item.veiculo
     vehicle.ano = item.ano
     vehicle.descricao = item.descricao
@@ -136,3 +137,7 @@ def last_register(db):
         model.marca = item.marca.marca
         results.append(model)
     return results
+
+
+def create_make(make, db):
+    return crud.create_make(db, make)
