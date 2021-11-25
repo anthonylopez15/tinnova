@@ -1,4 +1,4 @@
-# Desafio Tinnova Software
+# Desafio
 
 - Foi criado um arquivo makefile para facilitar rodar os exercicios. Os exercicios de 1 a 4
 se encontram na pasta /exercises.
